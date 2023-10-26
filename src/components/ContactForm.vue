@@ -62,7 +62,7 @@
         @click="deleteContact"
       >
         <i class="fa-solid fa-trash"></i>
-        Xóa
+        Xoá
       </button>
     </div>
   </Form>

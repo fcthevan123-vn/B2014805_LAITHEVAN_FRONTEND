@@ -6,7 +6,17 @@
       @submit:contact="updateContact"
       @delete:contact="deleteContact"
     />
-    <p>{{ message }}</p>
+    <div class="d-flex gap-3 mt-4 align-items-center justify-content-center">
+      <div v-if="message" class="alert alert-success" role="alert">
+        <p class="text-success m-0 fw-bold">{{ message }}</p>
+      </div>
+
+      <router-link :to="{ name: 'contactbook' }">
+        <span v-if="message" class="badge text-bg-primary"
+          >Trở về trang chủ</span
+        >
+      </router-link>
+    </div>
   </div>
 </template>
 <script>
@@ -54,6 +64,7 @@ export default {
       if (confirm("Bạn muốn xóa Liên hệ này?")) {
         try {
           await ContactService.delete(this.contact._id);
+          alert("Xoá liên hệ thành công");
           this.$router.push({ name: "contactbook" });
         } catch (error) {
           console.log(error);
